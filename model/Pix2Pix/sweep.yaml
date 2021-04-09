@@ -1,0 +1,10 @@
+# sweep.yaml
+program: train.py
+method: random
+metric:
+ name: g_loss
+ goal: minimize
+parameters:
+ L1_LAMBDA:
+  min: 0.01
+  max: 200.0
