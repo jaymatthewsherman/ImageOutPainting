@@ -123,4 +123,3 @@ class Generator(nn.Module):
         if self.config.should_collapse:
             return self.collapse(x)
         return x
-

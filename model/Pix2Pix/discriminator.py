@@ -38,19 +38,6 @@ class Discriminator(nn.Module):
         # either collapse across channels or dimensions
         d = 3 if self.config.should_collapse else 1
         x = torch.cat((x, y), dim=d)
-        filename = f"D:\Senior Year Northeastern University\DS Capstone\image_outpainting\Pix2PixCollapse\disc.txt"
-        with open(filename, "a") as f:
-            f.write(f"x: {x}\n")
         x = self.start(x)
-        with open(filename, "a") as f:
-            f.write(f"start: {x}\n")
         x = self.blocks(x)
-        with open(filename, "a") as f:
-            f.write(f"blocks: {x}\n")
-        x = self.end(x)
-        with open(filename, "a") as f:
-            f.write(f"end: {x}\n\n")
-        return x
-        
-
-        
+        return self.end(x)

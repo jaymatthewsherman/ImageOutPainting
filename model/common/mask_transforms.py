@@ -1,5 +1,6 @@
+import torch
+from .mask_gen import TopStripeMaskGenerator, RightStripeMaskGenerator, MaskApplier, RandomBorderStripeMaskGenerator
 from random import random
-from .mask_gen import *
 
 class Datum:
     def __init__(self, img, mask, right_side):
