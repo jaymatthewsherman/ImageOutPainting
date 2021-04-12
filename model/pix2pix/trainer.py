@@ -78,6 +78,7 @@ class Trainer:
                 }
 
                 if math.isnan(g_loss.item()) or math.isnan(d_loss.item()):
+                    exit(-1, "Training produced nan losses, exitting...")
                     raise Exception("Training produced nan losses, exitting...")
 
                 if (idx % self.config.log_batch_interval) == 0:
