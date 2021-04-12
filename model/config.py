@@ -101,6 +101,11 @@ class Config:
         self.break_on_error = break_on_error
 
         self.saved_path = saved_path
-        self.gen_path = f"{saved_path}/{self.model_name}/gen_checkpoint.pth.tar"
-        self.disc_path = f"{saved_path}/{self.model_name}/disc_checkpoint.pth.tar"
-        self.example_path = f"{saved_path}/{self.model_name}/examples/"
+        self.calculate_paths()
+
+    def calculate_paths(self):
+        self.gen_path = f"{self.saved_path}/{self.model_name}/gen_checkpoint.pth.tar"
+        self.disc_path = f"{self.saved_path}/{self.model_name}/disc_checkpoint.pth.tar"
+        self.example_path = f"{self.saved_path}/{self.model_name}/examples/"
+
+default_config = Config()
