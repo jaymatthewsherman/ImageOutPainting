@@ -14,3 +14,6 @@ wandb
 # datasets / saved models
 dataset
 saved
+
+# scratch notebooks
+scratch_notebooks
