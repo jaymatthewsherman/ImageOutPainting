@@ -43,7 +43,7 @@ def get_val_loader(config, num_samples=1):
     )
 
     val_loader = torch.utils.data.DataLoader(val_dataset,
-        batch_size=1, 
+        batch_size=num_samples, 
         num_workers=config.num_workers, 
         pin_memory=config.pin_memory
     )

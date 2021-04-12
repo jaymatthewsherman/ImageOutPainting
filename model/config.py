@@ -1,7 +1,8 @@
-import torch
+import torch, secrets
 from PIL import ImageColor
 
 # Hyperparameters
+MODEL_TYPE = "pix2pix"
 
 GEN_LEARNING_RATE = 2e-4
 DISC_LEARNING_RATE = 2e-4
@@ -39,6 +40,7 @@ WANDB_ENTITY = "buntry"
 
 class Config:
     def __init__(self,
+        model_type=MODEL_TYPE,
         epochs=DEFAULT_EPOCHS,
         entropy_fp=ENTROPY_FILEPATHS,
         fp_prefix=FP_PREFIX,
@@ -64,8 +66,10 @@ class Config:
         wandb_entity = WANDB_ENTITY,
         load_model = LOAD_MODEL,
         log_batch_interval = LOG_BATCH_INTERVAL,
-        break_on_error = BREAK_ON_ERROR
+        break_on_error = BREAK_ON_ERROR,
+        overwrite = False
     ):
+        self.type = model_type
         self.epochs = epochs
         self.entropy_fp = entropy_fp
         self.fp_prefix = fp_prefix
@@ -92,6 +96,7 @@ class Config:
         self.device = device
         self.wandb_entity = wandb_entity
         self.load_model = load_model
+        self.overwrite = overwrite
         self.log_batch_interval = log_batch_interval
         self.break_on_error = break_on_error
 

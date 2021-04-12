@@ -32,11 +32,11 @@ class Trainer:
             self.util.init_directory()
 
         if self.config.use_wandb:
-            wandb.init(project=f"outpainting-pix2pix", entity=self.config.wandb_entity)
+            wandb.init(project=f"outpainting-pix2pix", entity=self.config.wandb_entity, config=self.config)
             wandb.watch(self.generator)
             wandb.watch(self.discriminator)
 
-    def train(self, train_loader, val_loader, epoch):
+    def train(self, train_loader, get_val_loader, epoch):
         looper = tqdm(train_loader)
         device = self.config.device
 
@@ -84,8 +84,12 @@ class Trainer:
                     self.util.save_checkpoint(self.generator, self.opt_gen, self.config.gen_path)
                     self.util.save_checkpoint(self.discriminator, self.opt_disc, self.config.disc_path)
 
+                    val_loader = get_val_loader(1)
                     self.util.save_examples(self.generator, val_loader, epoch, idx, self.config.example_path)
+                
                 if self.config.use_wandb and (idx % (self.config.log_batch_interval // 4)) == 0:
+                    val_loader = get_val_loader(self.config.batch_size)
+                    loss_dict['val_loss'] = self.util.calculate_validation_loss(self.generator, val_loader, self.l1_loss)
                     wandb.log(loss_dict)
 
                 looper.set_postfix(loss_dict)
