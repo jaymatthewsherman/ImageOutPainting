@@ -12,17 +12,17 @@ parameters:
     max: 0.1
   l1_lambda:
     min: 1
-    max: 1000
+    max: 200
   data_limit:
     value: 30000
   epochs:
-    value: 10
+    value: 2
   num_workers:
     value: 8
   batch_size:
-    value: 64
+    value: 128
 command:
-  - python
+  - python3
   - ${program}
   - "--overwrite"
   - "--survive_error"
@@ -31,4 +31,4 @@ command:
   - "pix2pix_sweeper"
 early_terminate:
   type: hyperband
-  min_iter: 3
+  min_iter: 1
