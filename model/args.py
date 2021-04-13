@@ -30,6 +30,7 @@ def config_from_args():
         model_name = args.name,
         load_model = args.load_model,
         overwrite = args.overwrite,
+        batch_size = args.batch_size,
         break_on_error = (not args.survive_error)
     )
 
