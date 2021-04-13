@@ -20,7 +20,7 @@ parameters:
   num_workers:
     value: 8
   batch_size:
-    value: 128
+    value: 256
 command:
   - python3
   - ${program}

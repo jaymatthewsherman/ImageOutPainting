@@ -33,7 +33,7 @@ class Trainer:
             self.util.init_directory()
 
         if self.config.use_wandb:
-            wandb.init(project=f"outpainting-pix2pix", entity=self.config.wandb_entity, config=self.config)
+            wandb.init(project=f"outpainting-pix2pix", entity=self.config.wandb_entity, config=self.config, resume=self.config.load_model)
             wandb.watch(self.generator)
             wandb.watch(self.discriminator)
 
