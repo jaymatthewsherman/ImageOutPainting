@@ -1,4 +1,5 @@
 import torch
+import traceback
 import torch.nn as nn
 import torch.optim as optim
 from tqdm import tqdm
@@ -79,7 +80,6 @@ class Trainer:
 
                 if math.isnan(g_loss.item()) or math.isnan(d_loss.item()):
                     exit(-1, "Training produced nan losses, exitting...")
-                    raise Exception("Training produced nan losses, exitting...")
 
                 if (idx % self.config.log_batch_interval) == 0:
                     self.util.save_checkpoint(self.generator, self.opt_gen, self.config.gen_path)
@@ -98,7 +98,8 @@ class Trainer:
                 if self.config.break_on_error:
                     raise e
                 else:
-                    print(e)
+                    traceback_str = ''.join(traceback.format_tb(e.__traceback__))
+                    print(e, traceback_str)
 
 
 
