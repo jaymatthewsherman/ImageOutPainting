@@ -8,6 +8,7 @@ parser.add_argument("name", type=str, help="model name")
 parser.add_argument("--gen_lr", "-glr", type=float, default=GEN_LEARNING_RATE, help="generator learning rate")
 parser.add_argument("--disc_lr", "-dlr", type=float, default=DISC_LEARNING_RATE, help="discriminator learning rate")
 parser.add_argument("--l1_lambda", "-l1", type=float, default=L1_LAMBDA, help="l1 loss lambda")
+parser.add_argument("--disc_lambda", "-ld", type=float, default=DISC_LAMBDA, help="discriminator loss lambda")
 parser.add_argument("--epochs", "-e", type=int, default=DEFAULT_EPOCHS, help="number of epochs")
 parser.add_argument("--data_limit", "-lim", type=int, default=DATA_LIM, help="number of training images per epoch")
 parser.add_argument("--load_model", "-load", default=False, action="store_true", help="whether or not to load an existing model")
@@ -26,6 +27,7 @@ def config_from_args():
         gen_lr = args.gen_lr,
         disc_lr = args.disc_lr,
         l1_lambda = args.l1_lambda,
+        disc_lambda = args.disc_lambda,
         data_lim = args.data_limit,
         model_name = args.name,
         load_model = args.load_model,

@@ -7,6 +7,7 @@ MODEL_TYPE = "pix2pix"
 GEN_LEARNING_RATE = 2e-4
 DISC_LEARNING_RATE = 2e-4
 L1_LAMBDA = 100
+DISC_LAMBDA = 200
 
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 BATCH_SIZE = 12
@@ -52,6 +53,7 @@ class Config:
         gen_lr = GEN_LEARNING_RATE,
         disc_lr = DISC_LEARNING_RATE,
         l1_lambda = L1_LAMBDA,
+        disc_lambda = DISC_LAMBDA,
         data_lim = DATA_LIM,
         model_name = MODEL_NAME,
         saved_path = SAVED_PATH,
@@ -84,6 +86,7 @@ class Config:
         self.gen_lr = gen_lr
         self.disc_lr = disc_lr
         self.l1_lambda = l1_lambda
+        self.disc_lambda = disc_lambda
         self.data_lim = data_lim
         self.model_name = model_name
         self.use_wandb = use_wandb
