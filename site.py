@@ -24,7 +24,7 @@ def load_model(model_name):
     return Pix2PixEvaluator(default_config, util)
 
 # Change model name to the one that's being tested
-model_name = "pix2pix_sweeper"
+model_name = "pixie"
 model = load_model(model_name)
 
 validation_path = "./app/examples/"
