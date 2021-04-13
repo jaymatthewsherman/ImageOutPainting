@@ -64,7 +64,7 @@ class Trainer:
                 with torch.cuda.amp.autocast():
                     d_fake = self.discriminator(X, y_fake)
 
-                    g_fake_loss = self.bce(d_fake, torch.ones_like(d_fake))
+                    g_fake_loss = self.bce(d_fake, torch.ones_like(d_fake)) * self.config.disc_lambda
                     l1_extra_loss = self.l1_loss(y_fake, y) * self.config.l1_lambda
                     g_loss = g_fake_loss + l1_extra_loss
 
