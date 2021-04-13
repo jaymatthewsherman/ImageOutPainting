@@ -91,6 +91,8 @@ class Trainer:
                 if self.config.use_wandb and (idx % (self.config.log_batch_interval // 4)) == 0:
                     val_loader = get_val_loader(self.config.batch_size)
                     loss_dict['val_loss'] = self.util.calculate_validation_loss(self.generator, val_loader, self.l1_loss)
+                    if math.isnan(loss_dict['val_loss']):
+                        exit(-1, "Validation produced nan losses, exitting...")
                     wandb.log(loss_dict)
 
                 looper.set_postfix(loss_dict)
