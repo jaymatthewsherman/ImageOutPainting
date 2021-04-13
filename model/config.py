@@ -7,7 +7,7 @@ MODEL_TYPE = "pix2pix"
 GEN_LEARNING_RATE = 2e-4
 DISC_LEARNING_RATE = 2e-4
 L1_LAMBDA = 100
-DISC_LAMBDA = 200
+DISC_LAMBDA = 1
 
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 BATCH_SIZE = 12

@@ -1,6 +1,6 @@
 import torch
 import torchvision.transforms as transforms
-from .mask_transforms import RandomBorderMaskTransform, ApplyMaskTransform, MaskedAreaTransform
+from .mask_transforms import RandomBorderMaskTransform, ApplyMaskTransform, MaskedAreaTransform, FixImgTransform
 from .image_dataset import ImageDataset, load_filepaths
 
 def get_transforms(config):
@@ -8,6 +8,7 @@ def get_transforms(config):
         transforms.Resize((config.pic_height, config.pic_width)),
         transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
+        FixImgTransform(config),
         RandomBorderMaskTransform(config)
     ])
 

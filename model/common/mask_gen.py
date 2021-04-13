@@ -61,18 +61,9 @@ class MaskApplier():
     def apply(self, mask, img):        
         if not self.in_place:
             img = img.detach().clone()
-        if img.shape[0] != self.config.pic_channels:
-            img = self.fix_img(img)
         for dim in range(self.config.pic_channels):
             img[dim][mask] = self.config.color[dim]
         if self.extra_dim:
             return torch.cat((img, mask.repeat(1, 1, 1)))
         else:
             return img
-
-    def fix_img(self, img):
-        if img.shape[0] < self.config.pic_channels:
-            img = img[0, :].repeat(self.config.pic_channels, 1, 1)
-        else:
-            img = img[:self.config.pic_channels, :]
-        return img
