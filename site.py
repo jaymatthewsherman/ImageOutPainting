@@ -28,7 +28,17 @@ model_name = "pixie"
 model = load_model(model_name)
 
 validation_path = "./app/examples/"
-validation_files = ["mountainvillage.png", "restaurant.png", "kitchen.png", "hotel.png"]
+validation_files = [
+    "mountainvillage.png", 
+    "restaurant.png", 
+    "kitchen.png", 
+    "hotel.png",
+    "wave.png",
+    "rocking_chair.png",
+    "desert.png",
+    "bus_interior.png",
+    "display.png"
+]
 
 # ========== Site Begin =============
 
