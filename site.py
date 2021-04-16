@@ -7,6 +7,7 @@ import torch
 
 from app import input_type_radio, input_select_images, input_upload_images, input_mask_direction
 from app import file2image, tensor2img, img2tensor
+from app import information
 from model import default_config, Util, TopStripeMaskGenerator, RightStripeMaskGenerator, MaskApplier, Pix2PixEvaluator
 from model import load_filepaths
 
@@ -24,7 +25,7 @@ def load_model(model_name):
     return Pix2PixEvaluator(default_config, util)
 
 # Change model name to the one that's being tested
-model_name = "pixie"
+model_name = "parker"
 model = load_model(model_name)
 
 validation_path = "./app/examples/"
@@ -85,4 +86,7 @@ if img_file is not None:
 
     st.subheader("Predicted Image")
     st.image(predicted_img)
+
+    information.website_info(st)
+    information.model_info(st)
     
