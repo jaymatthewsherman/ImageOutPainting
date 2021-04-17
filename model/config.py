@@ -27,8 +27,10 @@ DEFAULT_PIC_DIM = (3, 256, 256)
 DEFAULT_COLOR = "#000000"
 DEFAULT_COLLAPSE = False
 DEFAULT_OUTSIDE = True
+DEFAULT_RECUR_BOOL = False
+DEFAULT_RECUR_DIRECTION = "top"
 
-LOAD_MODEL = False
+LOAD_MODEL = True
 BREAK_ON_ERROR = True
 LOG_BATCH_INTERVAL = 100
 
@@ -69,7 +71,9 @@ class Config:
         load_model = LOAD_MODEL,
         log_batch_interval = LOG_BATCH_INTERVAL,
         break_on_error = BREAK_ON_ERROR,
-        overwrite = False
+        overwrite = False,
+        recur = DEFAULT_RECUR_BOOL,
+        recur_direction = DEFAULT_RECUR_DIRECTION
     ):
         self.type = model_type
         self.epochs = epochs
@@ -105,6 +109,8 @@ class Config:
 
         self.saved_path = saved_path
         self.calculate_paths()
+        self.recur_bool = recur
+        self.recur_direction = recur_direction
 
     def calculate_paths(self):
         self.gen_path = f"{self.saved_path}/{self.model_name}/gen_checkpoint.pth.tar"

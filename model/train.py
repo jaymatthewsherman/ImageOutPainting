@@ -1,4 +1,4 @@
-from pix2pix import Trainer as Pix2PixTrainer
+from Pix2Pix import Trainer as Pix2PixTrainer
 from args import config_from_args
 from common import Util, get_train_loader, get_val_loader
 

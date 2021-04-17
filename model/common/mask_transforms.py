@@ -37,7 +37,7 @@ class ApplyMaskTransform:
     def __init__(self, config, extra_dim=True):
         self.config = config
         self.ma = MaskApplier(config, in_place=False, extra_dim=extra_dim)
-        
+
     def __call__(self, datum):
         return self.ma.apply(datum.mask, datum.img)
 

@@ -4,6 +4,7 @@ from .mask_transforms import RandomBorderMaskTransform, ApplyMaskTransform, Mask
 from .image_dataset import ImageDataset, load_filepaths
 
 def get_transforms(config):
+
     both_transform = transforms.Compose([
         transforms.Resize((config.pic_height, config.pic_width)),
         transforms.RandomHorizontalFlip(),

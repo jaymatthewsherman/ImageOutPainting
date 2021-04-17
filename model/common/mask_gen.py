@@ -47,9 +47,16 @@ class RandomBorderStripeMaskGenerator():
             torch.ones(size=ones_shape, dtype=torch.bool),
             torch.zeros(size=zeros_shape, dtype=torch.bool)
         ))
+        direction_dict = {"top": 0,
+                          "left": 1,
+                          "bottom": 2,
+                          "right": 3}
+        self.n_rotations = (direction_dict[config.recur_direction]
+                            if config.recur_direction is not None and config.recur_bool
+                            else randrange(4))
 
     def generate(self):
-        return torch.rot90(self.top_stripe_mask, randrange(4))
+        return torch.rot90(self.top_stripe_mask, self.n_rotations)
 
 # Applies a mask to an image
 class MaskApplier():
