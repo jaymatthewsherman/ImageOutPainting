@@ -1,4 +1,6 @@
-from config import *
+"""import importlib
+config = importlib.import_module('config', "../")"""
+from .config import *
 import argparse
 
 parser = argparse.ArgumentParser(description="Outpainting Model Trainer")
@@ -18,6 +20,10 @@ parser.add_argument("--num_workers", "-nw", type=int, default=NUM_WORKERS, help=
 parser.add_argument("--batch_size", "-bs", type=int, default=BATCH_SIZE, help="batch size")
 parser.add_argument("--survive_error", "-se", default=False, action="store_true", help="whether the program will attempt to stay up in the case of failure")
 
+parser.add_argument("--outside", default=False, action="store_true", help="whether or not test on outside data")
+parser.add_argument("--recur", default=False, action="store_true", help="whether or not to recur")
+parser.add_argument("--recur_direction", type=str, help="which direction to recur in- options are 'top', 'bottom', 'right', 'left'")
+
 def config_from_args():
     args = parser.parse_args()
 
@@ -33,6 +39,9 @@ def config_from_args():
         load_model = args.load_model,
         overwrite = args.overwrite,
         batch_size = args.batch_size,
-        break_on_error = (not args.survive_error)
+        break_on_error = (not args.survive_error),
+        outside = args.outside,
+        recur_bool = args.recur,
+        recur_direction = args.recur_direction
     )
 

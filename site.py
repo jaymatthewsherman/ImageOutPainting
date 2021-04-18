@@ -15,7 +15,7 @@ tsmg = TopStripeMaskGenerator(default_config)
 rsmg = RightStripeMaskGenerator(default_config)
 mask_applier = MaskApplier(default_config)
 
-default_config.saved_path = "./model/saved"
+default_config.saved_path = "model//saved"
 
 def load_model(model_name):
     default_config.model_name = model_name
@@ -30,9 +30,9 @@ model = load_model(model_name)
 
 validation_path = "./app/examples/"
 validation_files = [
-    "mountainvillage.png", 
-    "restaurant.png", 
-    "kitchen.png", 
+    "mountainvillage.png",
+    "restaurant.png",
+    "kitchen.png",
     "hotel.png",
     "wave.png",
     "rocking_chair.png",
@@ -89,4 +89,3 @@ if img_file is not None:
 
     information.website_info(st)
     information.model_info(st)
-    

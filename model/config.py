@@ -27,18 +27,18 @@ DEFAULT_PIC_DIM = (3, 256, 256)
 DEFAULT_COLOR = "#000000"
 DEFAULT_COLLAPSE = False
 DEFAULT_OUTSIDE = True
-DEFAULT_RECUR_BOOL = False
+DEFAULT_RECUR_BOOL = True
 DEFAULT_RECUR_DIRECTION = "top"
 
 LOAD_MODEL = True
 BREAK_ON_ERROR = True
 LOG_BATCH_INTERVAL = 100
 
-SAVED_PATH = "./saved"
+SAVED_PATH = "model"
 
-MODEL_NAME = None
+MODEL_NAME = 'Pix2Pix'
 
-USE_WANDB = True
+USE_WANDB = False
 WANDB_ENTITY = "buntry"
 
 class Config:
@@ -113,8 +113,8 @@ class Config:
         self.recur_direction = recur_direction
 
     def calculate_paths(self):
-        self.gen_path = f"{self.saved_path}/{self.model_name}/gen_checkpoint.pth.tar"
-        self.disc_path = f"{self.saved_path}/{self.model_name}/disc_checkpoint.pth.tar"
-        self.example_path = f"{self.saved_path}/{self.model_name}/examples/"
+        self.gen_path = f"D:\Senior Year Northeastern University\DS Capstone\ImageOutpainting\{self.saved_path}/{self.model_name}/saved/gen_checkpoint_best.pth.tar"
+        self.disc_path = f"D:\Senior Year Northeastern University\DS Capstone\ImageOutpainting\{self.saved_path}/{self.model_name}/saved/disc_checkpoint_best.pth.tar"
+        self.example_path = f"D:\Senior Year Northeastern University\DS Capstone\ImageOutpainting\{self.saved_path}/{self.model_name}/examples/"
 
 default_config = Config()

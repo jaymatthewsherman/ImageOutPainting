@@ -37,7 +37,13 @@ class Trainer:
             wandb.watch(self.generator)
             wandb.watch(self.discriminator)
 
+    def get_generator(self):
+        return self.generator
+
     def train(self, train_loader, get_val_loader, epoch):
+        if self.config.outside or self.config.recur_bool:
+            return self.generator
+
         looper = tqdm(train_loader)
         device = self.config.device
 
