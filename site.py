@@ -8,12 +8,13 @@ import torch
 from app import input_type_radio, input_select_images, input_upload_images, input_mask_direction
 from app import file2image, tensor2img, img2tensor
 from app import information
-from model import default_config, Util, TopStripeMaskGenerator, RightStripeMaskGenerator, MaskApplier, Pix2PixEvaluator
+from model import default_config, Util, TopStripeMaskGenerator, RightStripeMaskGenerator, MaskApplier, Pix2PixEvaluator, FixImgTransform
 from model import load_filepaths
 
 tsmg = TopStripeMaskGenerator(default_config)
 rsmg = RightStripeMaskGenerator(default_config)
 mask_applier = MaskApplier(default_config)
+fix_img = FixImgTransform(default_config)
 
 default_config.saved_path = "./model/saved"
 
@@ -61,7 +62,9 @@ if img_file is not None:
     # convert image file to tensor
     img = file2image(img_file)
     X = img2tensor(img)
+    X = fix_img(X)
     img = tensor2img(X)
+    
 
     # get and apply mask
     direction = input_mask_direction(st)
