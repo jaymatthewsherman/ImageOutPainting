@@ -12,7 +12,7 @@ def get_transforms(config):
         RandomBorderMaskTransform(config)
     ])
 
-    xonly_transform = ApplyMaskTransform(config, extra_dim=(not config.should_collapse))
+    xonly_transform = ApplyMaskTransform(config)
     yonly_transform = MaskedAreaTransform(config)
 
     return both_transform, xonly_transform, yonly_transform
