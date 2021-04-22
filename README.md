@@ -11,7 +11,7 @@ A Pix2Pix-based neural network solution to image outpainting.
 
 ## To run the model
 * Install dependencies (listed below).
-* Set the values in /'model/config.py/' to reflect how you want to run the model. See the list of features below. Alternatively, many of these features can be set during the command call line below. Type /'--help/' for options.
+* Set the values in 'model/config.py' to reflect how you want to run the model. See the list of features below. Alternatively, many of these features can be set during the command call line below. Type '--help' for options.
 
 ### Hyperparameters in 'model/config.py':
 * MODEL_TYPE: the string representing the model, currently only processes "pix2pix"
@@ -22,8 +22,8 @@ A Pix2Pix-based neural network solution to image outpainting.
 * DEVICE: device to run the model on ('cuda' if there is a cuda device available)
 * BATCH_SIZE: how many images to include in a batch for training
 * NUM_WORKERS: the number of cores to use for training
-* PIN_MEMORY: 
-* DATA_LIM:
+* PIN_MEMORY: set to True if you want to load images on CPU and push to training on GPU
+* DATA_LIM: number of images to load
 * SHUFFLE: whether to shuffle the images during training or not
 * ENTROPY_FILEPATHS: the relative file location of the list of images from least to greatest entropy
 * TRAIN_FP: the realtive file location of the train images
