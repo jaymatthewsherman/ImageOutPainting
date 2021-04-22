@@ -28,7 +28,7 @@ class Util:
             y_hat = model(X)
 
             if self.config.should_collapse:
-                save_image(X, f"{directory}/epoch{epoch}_batch{batch}_{i}_input.png")
+                save_image(X[:, :3, :, :], f"{directory}/epoch{epoch}_batch{batch}_{i}_input.png")
             save_image(y_hat, f"{directory}/epoch{epoch}_batch{batch}_{i}_pred.png")
             save_image(y, f"{directory}/epoch{epoch}_batch{batch}_{i}_real.png")
         model.train()
