@@ -3,10 +3,10 @@ import torch
 import random
 from PIL import Image
 
-class Pix2PixImageDataset(torch.utils.data.Dataset):
+class ImageDataset(torch.utils.data.Dataset):
 
     def __init__(self, directory=None, both=None, xonly=None, yonly=None, shuffle=False, filepaths=[], lim=None):
-        super(Pix2PixImageDataset).__init__()
+        super(ImageDataset).__init__()
         self.filepaths = filepaths or list(self.get_pic_filepaths(directory))
         self.shuffle = shuffle
         if shuffle:
@@ -31,12 +31,13 @@ class Pix2PixImageDataset(torch.utils.data.Dataset):
             for pic in os.listdir(os.path.join(directory, folder)):
                 yield os.path.join(directory, folder, pic)
 
-    def load_filepaths(directory, prefix=None):
-        filepaths = []
-        with open(directory) as f:
-            for path in f.readlines():
-                if prefix is not None:
-                    filepaths.append(f"{prefix}{path.strip()}")
-                else:
-                    filepaths.append(path.strip())
-        return filepaths
+
+def load_filepaths(directory, prefix=None):
+    filepaths = []
+    with open(directory) as f:
+        for path in f.readlines():
+            if prefix is not None:
+                filepaths.append(f"{prefix}{path.strip()}")
+            else:
+                filepaths.append(path.strip())
+    return filepaths

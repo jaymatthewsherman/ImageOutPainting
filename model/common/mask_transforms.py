@@ -1,5 +1,6 @@
+import torch
+from .mask_gen import TopStripeMaskGenerator, RightStripeMaskGenerator, MaskApplier, RandomBorderStripeMaskGenerator
 from random import random
-from .mask_gen import *
 
 class Datum:
     def __init__(self, img, mask, right_side):
@@ -61,3 +62,15 @@ class MaskedAreaTransform:
         else:
             # transpose if it is vertical (either top side or bot side of image)
             return torch.transpose(datum.img[:, datum.mask].reshape(self.c, self.sw, self.w), 1, 2)
+
+# Fix images to the number of channels transform
+class FixImgTransform:
+    def __init__(self, config):
+        self.config = config
+
+    def __call__(self, img):
+        if img.shape[0] == self.config.pic_channels:
+            return img
+        elif img.shape[0] < self.config.pic_channels:
+            return img[0, :].repeat(self.config.pic_channels, 1, 1)
+        return img[:self.config.pic_channels, :]

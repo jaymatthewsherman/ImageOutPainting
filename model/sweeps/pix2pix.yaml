@@ -1,0 +1,34 @@
+program: train.py
+method: bayes
+metric:
+  name: val_loss
+  goal: minimize
+parameters:
+  gen_lr:
+    min: 0.001
+    max: 0.1
+  disc_lr:
+    min: 0.001
+    max: 0.1
+  l1_lambda:
+    min: 1
+    max: 200
+  data_limit:
+    value: 30000
+  epochs:
+    value: 2
+  num_workers:
+    value: 8
+  batch_size:
+    value: 256
+command:
+  - python3
+  - ${program}
+  - "--overwrite"
+  - "--survive_error"
+  - ${args}
+  - "pix2pix"
+  - "pix2pix_sweeper"
+early_terminate:
+  type: hyperband
+  min_iter: 1

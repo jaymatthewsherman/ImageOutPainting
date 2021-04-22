@@ -1,24 +1,19 @@
-model/dataset/places365_standard/*
-
-entropy-filepaths*
-model/dataset/entropy-filepaths*
-
+# editors
 .vscode
-__pycache__
-model/__pycache__
-model/Pix2Pix/__pychache__
-model/UNet/__pycache__
-.ipynb_checkpoints
-
-wandb
-model/Pix2Pix/wandb
-model/UNet/wandb
-model/wandb
-
-model/saved_models
-
 .idea
 
-model/dataset/outside_data
+# notebook
+.ipynb_checkpoints
 
-notebooks/ipynb_checkpoints
+# python
+__pycache__
+
+# wandb
+wandb
+
+# datasets / saved models
+dataset
+saved
+
+# scratch notebooks
+scratch_notebooks
