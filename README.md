@@ -12,6 +12,7 @@ A Pix2Pix-based neural network solution to image outpainting.
 ## To run the model
 * Install dependencies (listed below).
 * Set the values in 'model/config.py' to reflect how you want to run the model. See the list of features below. Alternatively, many of these features can be set during the command call line below. Type '--help' for options.
+* Navigate to 'model' in the terminal and run 'train.py'
 
 ### Hyperparameters in 'model/config.py':
 * MODEL_TYPE: the string representing the model, currently only processes "pix2pix"
